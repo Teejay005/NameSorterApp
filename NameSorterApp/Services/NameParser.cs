@@ -16,7 +16,7 @@ namespace NameSorterApp.Services
         private readonly string pattern = @"(?<givennames>.*)\s+(?<lastname>\S+)$";
 
         // <inheritdoc />
-        public async Task<IEnumerable<Person>> Parse(IEnumerable<string> names)
+        public IEnumerable<Person> Parse(IEnumerable<string> names)
         {
             if (names == null || !names.Any())
             {

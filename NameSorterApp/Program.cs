@@ -28,7 +28,7 @@ public class Program
             IFileWriter fileWriter = new FileWriter();
             IEnumerable<string> names = fileReader.ReadFile(filePath.Trim());
             INameParser nameParser = new NameParser();
-            IEnumerable<Person> persons = await nameParser.Parse(names);
+            IEnumerable<Person> persons = nameParser.Parse(names);
 
             if (!persons.Any())
             {

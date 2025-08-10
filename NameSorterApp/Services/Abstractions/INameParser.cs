@@ -17,6 +17,6 @@ namespace NameSorterApp.Services.Abstractions
         /// <returns>A task that represents the asynchronous operation. The task result contains a collection of  <see
         /// cref="Person"/> objects created from the provided names. If no names are provided, the result is an empty
         /// collection.</returns>
-        Task<IEnumerable<Person>> Parse(IEnumerable<string> names);
+        IEnumerable<Person> Parse(IEnumerable<string> names);
     }
 }
