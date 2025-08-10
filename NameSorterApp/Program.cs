@@ -9,7 +9,11 @@ public class Program
     public static async Task Main(string[] args)
     {
         Console.WriteLine("Name Sorter Application");
-        Console.WriteLine("Please enter the path to the input file containing names:");
+        if (args.Length == 0)
+        {
+            Console.WriteLine("Please provide the file path as a command line argument.");
+            return;
+        }
         var filePath = args[0];
 
         if (string.IsNullOrEmpty(filePath))
