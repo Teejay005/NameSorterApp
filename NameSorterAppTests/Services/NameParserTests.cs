@@ -10,7 +10,7 @@ namespace NameSorterApp.Tests.Services
         public async Task Parse_ThrowsArgumentNullException_WhenInputIsNull()
         {
             // Act & Assert
-            var ex = await Assert.ThrowsAsync<ArgumentNullException>(() => _parser.Parse(null));
+            var ex = Assert.Throws<ArgumentNullException>(() => _parser.Parse(null));
             Assert.Equal("Input names cannot be null or empty. (Parameter 'names')", ex.Message);
         }
 
@@ -18,7 +18,7 @@ namespace NameSorterApp.Tests.Services
         public async Task Parse_ThrowsArgumentNullException_WhenInputIsEmpty()
         {
             // Act & Assert
-            var ex = await Assert.ThrowsAsync<ArgumentNullException>(() => _parser.Parse(Array.Empty<string>()));
+            var ex = Assert.Throws<ArgumentNullException>(() => _parser.Parse(Array.Empty<string>()));
             Assert.Equal("Input names cannot be null or empty. (Parameter 'names')", ex.Message);
         }
 
@@ -29,7 +29,7 @@ namespace NameSorterApp.Tests.Services
             var input = new[] { "John Smith", "   ", "", "Jane Doe" };
 
             // Act
-            var result = (await _parser.Parse(input)).ToList();
+            var result = (_parser.Parse(input)).ToList();
 
             // Assert
             Assert.Equal(2, result.Count);
@@ -44,7 +44,7 @@ namespace NameSorterApp.Tests.Services
             var input = new[] { "Mary Jane Watson" };
 
             // Act
-            var result = (await _parser.Parse(input)).ToList();
+            var result = (_parser.Parse(input)).ToList();
 
             // Assert
             Assert.Single(result);
@@ -59,7 +59,7 @@ namespace NameSorterApp.Tests.Services
             var input = new[] { "SingleName", "John Smith" };
 
             // Act
-            var result = (await _parser.Parse(input)).ToList();
+            var result = (_parser.Parse(input)).ToList();
 
             // Assert
             Assert.Single(result);
@@ -74,7 +74,7 @@ namespace NameSorterApp.Tests.Services
             var input = new[] { "   Anna Maria   Lopez   " };
 
             // Act
-            var result = (await _parser.Parse(input)).ToList();
+            var result = (_parser.Parse(input)).ToList();
 
             // Assert
             Assert.Single(result);
