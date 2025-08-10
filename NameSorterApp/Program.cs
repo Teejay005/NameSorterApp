@@ -6,7 +6,7 @@ using NameSorterApp.Services.Abstractions;
 
 public class Program
 {
-    public static async Task Main(string[] args)
+    public static void Main(string[] args)
     {
         Console.WriteLine("Name Sorter Application");
         if (args.Length == 0)
@@ -25,7 +25,8 @@ public class Program
         try
         {
             IFileReader fileReader = new InputFileReader();
-            IFileWriter fileWriter = new FileWriter();
+            IOutputWriter fileWriter = new OutputFileWriter();
+            IOutputWriter consoleWriter = new OutputScreenWriter();
             IEnumerable<string> names = fileReader.ReadFile(filePath.Trim());
             INameParser nameParser = new NameParser();
             IEnumerable<Person> persons = nameParser.Parse(names);
@@ -39,13 +40,10 @@ public class Program
             var sortedPersons = persons.OrderBy(p => p, new PersonComparer()).ToList();
 
             Console.WriteLine("Sorted Names:");
-            foreach (var person in sortedPersons)
-            {
-                Console.WriteLine($"{person.ToString()}");
-            }
+            fileWriter.Write(sortedPersons);
+            consoleWriter.Write(sortedPersons);
 
-            fileWriter.Write(sortedPersons, "sorted-names-list.txt");
-
+            Console.WriteLine("Names have been sorted and written to 'sorted-names-list.txt'.");
         }
         catch (Exception ex)
         {
