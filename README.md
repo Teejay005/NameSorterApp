@@ -30,6 +30,14 @@ NameSorterApp is a .NET 8 console application that reads a list of names from a 
    dotnet build
    ```
 3. Ensure there are no build errors.
+5. Run unit tests to verify functionality:
+   ```bash
+   cd NameSorterAppTests
+   ```
+   Then run:
+   ```bash
+   dotnet test
+   ```
 4. Then navigate to the `NameSorterApp` directory:
    ```bash
    cd NameSorterApp
