@@ -49,5 +49,5 @@ NameSorterApp is a .NET 8 console application that reads a list of names from a 
 6. The output will be in the `publish` directory.
 7. Execute the application with:
    ```bash
-   nam-sorter <input_file>
+   name-sorter <input_file>
    ```
