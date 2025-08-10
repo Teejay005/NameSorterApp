@@ -13,7 +13,7 @@ namespace NameSorterApp.Services
         /// <remarks>The pattern assumes that the full name consists of one or more given names followed
         /// by a single last name, separated by whitespace. The last name is captured in the "lastname" group, and the
         /// given names are captured in the "givennames" group.</remarks>
-        private readonly string pattern = @"(?<givennames>.*)\s+(?<lastname>\S+)$";
+        private readonly string REGEX_PATTERN = @"(?<givennames>.*)\s+(?<lastname>\S+)$";
 
         // <inheritdoc />
         public IEnumerable<Person> Parse(IEnumerable<string> names)
@@ -30,7 +30,7 @@ namespace NameSorterApp.Services
                 {
                     continue; // Skip empty lines
                 }
-                var match = Regex.Match(name.Trim(), pattern);
+                var match = Regex.Match(name.Trim(), REGEX_PATTERN);
                 if (match.Success)
                 {
                     var person = new Person
